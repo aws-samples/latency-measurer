@@ -1,0 +1,2133 @@
+{
+  "US East": {
+    "N. Virginia": [
+      { "Region": "us-east-1", "IP Prefix": "3.80.0.0/12", "IP": "3.80.0.0" },
+      { "Region": "us-east-1", "IP Prefix": "3.208.0.0/12", "IP": "3.208.0.0" },
+      { "Region": "us-east-1", "IP Prefix": "3.224.0.0/12", "IP": "3.224.0.0" },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "18.204.0.0/14",
+        "IP": "18.204.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "18.208.0.0/13",
+        "IP": "18.208.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "18.232.0.0/14",
+        "IP": "18.232.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "23.20.0.0/14",
+        "IP": "23.23.255.255"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "34.192.0.0/12",
+        "IP": "34.192.0.54"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "34.224.0.0/12",
+        "IP": "34.224.0.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "35.153.0.0/16",
+        "IP": "35.153.128.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "35.168.0.0/13",
+        "IP": "35.168.0.253"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "44.192.0.0/11",
+        "IP": "44.192.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "50.16.0.0/15",
+        "IP": "50.17.255.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "50.19.0.0/16",
+        "IP": "50.19.255.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.0.0.0/15",
+        "IP": "52.1.255.254"
+      },
+      { "Region": "us-east-1", "IP Prefix": "52.2.0.0/15", "IP": "52.2.0.2" },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.4.0.0/14",
+        "IP": "52.7.255.255"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.20.0.0/14",
+        "IP": "52.20.63.253"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.44.0.0/15",
+        "IP": "52.45.127.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.54.0.0/15",
+        "IP": "52.54.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.70.0.0/15",
+        "IP": "52.70.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.72.0.0/15",
+        "IP": "52.72.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.86.0.0/15",
+        "IP": "52.86.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.90.0.0/15",
+        "IP": "52.90.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "52.200.0.0/13",
+        "IP": "52.200.255.254"
+      },
+      { "Region": "us-east-1", "IP Prefix": "54.80.0.0/14", "IP": "54.80.0.2" },
+      { "Region": "us-east-1", "IP Prefix": "54.84.0.0/15", "IP": "54.84.0.3" },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.86.0.0/15",
+        "IP": "54.86.63.252"
+      },
+      { "Region": "us-east-1", "IP Prefix": "54.88.0.0/16", "IP": "54.88.0.3" },
+      { "Region": "us-east-1", "IP Prefix": "54.89.0.0/16", "IP": "54.89.0.3" },
+      { "Region": "us-east-1", "IP Prefix": "54.90.0.0/15", "IP": "54.90.0.3" },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.92.128.0/17",
+        "IP": "54.92.128.2"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.144.0.0/14",
+        "IP": "54.144.0.2"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.152.0.0/16",
+        "IP": "54.152.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.156.0.0/14",
+        "IP": "54.156.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.160.0.0/14",
+        "IP": "54.160.0.2"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.164.0.0/15",
+        "IP": "54.164.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.166.0.0/15",
+        "IP": "54.166.0.2"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.172.0.0/15",
+        "IP": "54.172.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.174.0.0/15",
+        "IP": "54.174.0.2"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.196.0.0/15",
+        "IP": "54.196.0.1"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.198.0.0/16",
+        "IP": "54.198.0.1"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.204.0.0/15",
+        "IP": "54.205.255.255"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.208.0.0/15",
+        "IP": "54.208.0.1"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.210.0.0/15",
+        "IP": "54.210.63.252"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.221.0.0/16",
+        "IP": "54.221.214.221"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.224.0.0/15",
+        "IP": "54.225.110.215"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.226.0.0/15",
+        "IP": "54.226.0.1"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.234.0.0/15",
+        "IP": "54.235.236.60"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.236.0.0/15",
+        "IP": "54.236.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "54.242.0.0/15",
+        "IP": "54.243.255.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "67.202.0.0/18",
+        "IP": "67.202.0.5"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "72.44.32.0/19",
+        "IP": "72.44.32.8"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "75.101.128.0/17",
+        "IP": "75.101.163.105"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "100.24.0.0/13",
+        "IP": "100.24.0.0"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "107.20.0.0/14",
+        "IP": "107.22.255.255"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "174.129.0.0/16",
+        "IP": "174.129.0.31"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "184.72.64.0/18",
+        "IP": "184.72.92.4"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "184.72.128.0/17",
+        "IP": "184.72.255.254"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "184.73.0.0/16",
+        "IP": "184.73.173.231"
+      },
+      {
+        "Region": "us-east-1",
+        "IP Prefix": "204.236.192.0/18",
+        "IP": "204.236.238.4"
+      }
+    ],
+    "Atlanta, US": [
+      {
+        "Region": "us-east-1-atl-1",
+        "IP Prefix": "15.181.80.0/20",
+        "IP": "15.181.81.106"
+      }
+    ],
+    "Boston, US": [
+      {
+        "Region": "us-east-1-bos-1",
+        "IP Prefix": "68.66.112.0/20",
+        "IP": "68.66.113.112"
+      }
+    ],
+    "Buenos Aires, Argentina": [
+      {
+        "Region": "us-east-1-bue-1",
+        "IP Prefix": "15.220.120.0/21",
+        "IP": "15.220.120.245"
+      }
+    ],
+    "Chicago, US": [
+      {
+        "Region": "us-east-1-chi-1",
+        "IP Prefix": "15.181.176.0/20",
+        "IP": "15.181.176.161"
+      }
+    ],
+    "Dallas, US": [
+      {
+        "Region": "us-east-1-dfw-1",
+        "IP Prefix": "15.181.192.0/19",
+        "IP": "15.181.192.183"
+      }
+    ],
+    "Houston, US": [
+      {
+        "Region": "us-east-1-iah-1",
+        "IP Prefix": "72.41.0.0/20",
+        "IP": "72.41.10.180"
+      }
+    ],
+    "Kansas City, US": [
+      {
+        "Region": "us-east-1-mci-1",
+        "IP Prefix": "15.181.96.0/20",
+        "IP": "15.181.98.141"
+      }
+    ],
+    "Lima, Peru": [
+      {
+        "Region": "us-east-1-lim-1",
+        "IP Prefix": "96.0.16.0/21",
+        "IP": "96.0.17.141"
+      }
+    ],
+    "Miami, US": [
+      {
+        "Region": "us-east-1-mia-1",
+        "IP Prefix": "64.187.128.0/20",
+        "IP": "64.187.131.1"
+      }
+    ],
+    "Minneapolis, US": [
+      {
+        "Region": "us-east-1-msp-1",
+        "IP Prefix": "15.181.48.0/20",
+        "IP": "15.181.48.172"
+      }
+    ],
+    "New York, US": [
+      {
+        "Region": "us-east-1-nyc-1",
+        "IP Prefix": "15.181.160.0/20",
+        "IP": "15.181.161.232"
+      }
+    ],
+    "Philadelphia, US": [
+      {
+        "Region": "us-east-1-phl-1",
+        "IP Prefix": "15.181.144.0/20",
+        "IP": "15.181.144.146"
+      }
+    ],
+    "Quer\u00c3\u00a9taro, Mexico": [
+      {
+        "Region": "us-east-1-qro-1",
+        "IP Prefix": "15.220.184.0/21",
+        "IP": "15.220.184.207"
+      }
+    ],
+    "Santiago, Chile": [
+      {
+        "Region": "us-east-1-scl-1",
+        "IP Prefix": "96.0.48.0/21",
+        "IP": "96.0.49.127"
+      }
+    ],
+    "Ohio": [
+      { "Region": "us-east-2", "IP Prefix": "3.12.0.0/16", "IP": "3.12.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.13.0.0/16", "IP": "3.13.0.254" },
+      { "Region": "us-east-2", "IP Prefix": "3.14.0.0/15", "IP": "3.14.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.16.0.0/14", "IP": "3.16.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.20.0.0/14", "IP": "3.20.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.128.0.0/15", "IP": "3.128.0.0" },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "3.130.0.0/16",
+        "IP": "3.130.0.254"
+      },
+      { "Region": "us-east-2", "IP Prefix": "3.131.0.0/16", "IP": "3.131.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.132.0.0/14", "IP": "3.132.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.136.0.0/13", "IP": "3.136.0.0" },
+      { "Region": "us-east-2", "IP Prefix": "3.144.0.0/13", "IP": "3.144.0.0" },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "13.58.0.0/15",
+        "IP": "13.58.0.253"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.116.0.0/14",
+        "IP": "18.116.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.188.0.0/16",
+        "IP": "18.188.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.189.0.0/16",
+        "IP": "18.189.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.190.0.0/16",
+        "IP": "18.190.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.191.0.0/16",
+        "IP": "18.191.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.216.0.0/14",
+        "IP": "18.216.0.253"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.220.0.0/14",
+        "IP": "18.220.0.252"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "18.224.0.0/14",
+        "IP": "18.224.0.0"
+      },
+      {
+        "Region": "us-east-2",
+        "IP Prefix": "52.14.0.0/16",
+        "IP": "52.14.64.0"
+      },
+      { "Region": "us-east-2", "IP Prefix": "52.15.0.0/16", "IP": "52.15.55.0" }
+    ],
+    "AWS GovCloud (US) East": [
+      {
+        "Region": "us-gov-east-1",
+        "IP Prefix": "18.252.0.0/16",
+        "IP": "18.252.0.253"
+      },
+      {
+        "Region": "us-gov-east-1",
+        "IP Prefix": "18.253.0.0/16",
+        "IP": "18.253.46.71"
+      },
+      {
+        "Region": "us-gov-east-1",
+        "IP Prefix": "18.254.0.0/16",
+        "IP": "18.254.0.254"
+      }
+    ]
+  },
+  "US West": {
+    "N. California": [
+      { "Region": "us-west-1", "IP Prefix": "13.52.0.0/16", "IP": "13.52.0.0" },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "13.56.0.0/16",
+        "IP": "13.56.63.251"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "13.57.0.0/16",
+        "IP": "13.57.0.253"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "18.144.0.0/15",
+        "IP": "18.144.0.254"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "50.18.0.0/16",
+        "IP": "50.18.56.1"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "52.8.0.0/16",
+        "IP": "52.8.191.254"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "52.9.0.0/16",
+        "IP": "52.9.63.252"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "52.52.0.0/15",
+        "IP": "52.52.63.252"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.67.0.0/17",
+        "IP": "54.67.63.253"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.67.128.0/17",
+        "IP": "54.67.128.0"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.151.0.0/17",
+        "IP": "54.151.0.2"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.153.0.0/17",
+        "IP": "54.153.63.252"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.176.0.0/15",
+        "IP": "54.176.64.1"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.183.0.0/16",
+        "IP": "54.183.64.3"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.193.0.0/16",
+        "IP": "54.193.0.3"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.215.0.0/16",
+        "IP": "54.215.0.1"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.219.0.0/16",
+        "IP": "54.219.127.255"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "54.241.0.0/16",
+        "IP": "54.241.127.255"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "184.72.0.0/18",
+        "IP": "184.72.56.36"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "184.169.128.0/17",
+        "IP": "184.169.255.254"
+      },
+      {
+        "Region": "us-west-1",
+        "IP Prefix": "204.236.128.0/18",
+        "IP": "204.236.129.206"
+      }
+    ],
+    "Oregon": [
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "18.236.0.0/15",
+        "IP": "18.236.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "18.246.0.0/16",
+        "IP": "18.246.28.254"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "34.208.0.0/12",
+        "IP": "34.208.63.251"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "35.80.0.0/12",
+        "IP": "35.95.2.254"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "35.155.0.0/16",
+        "IP": "35.155.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "35.160.0.0/13",
+        "IP": "35.160.63.253"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "44.224.0.0/11",
+        "IP": "44.224.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "50.112.0.0/16",
+        "IP": "50.112.120.53"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "52.10.0.0/15",
+        "IP": "52.10.63.252"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "52.12.0.0/15",
+        "IP": "52.12.128.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "52.24.0.0/14",
+        "IP": "52.24.63.252"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "52.32.0.0/14",
+        "IP": "52.32.63.252"
+      },
+      { "Region": "us-west-2", "IP Prefix": "52.36.0.0/14", "IP": "52.36.0.2" },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "52.40.0.0/14",
+        "IP": "52.43.255.254"
+      },
+      { "Region": "us-west-2", "IP Prefix": "52.88.0.0/15", "IP": "52.88.0.2" },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.68.0.0/15",
+        "IP": "54.68.63.252"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.70.0.0/15",
+        "IP": "54.70.0.12"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.148.0.0/15",
+        "IP": "54.148.0.2"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.184.0.0/15",
+        "IP": "54.184.0.3"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.186.0.0/15",
+        "IP": "54.186.0.3"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.188.0.0/15",
+        "IP": "54.188.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.190.0.0/16",
+        "IP": "54.190.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.191.0.0/16",
+        "IP": "54.191.63.252"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.200.0.0/15",
+        "IP": "54.200.0.1"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.202.0.0/15",
+        "IP": "54.202.0.1"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.212.0.0/15",
+        "IP": "54.212.0.0"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.214.0.0/16",
+        "IP": "54.214.0.1"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.218.0.0/16",
+        "IP": "54.218.4.254"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.244.0.0/16",
+        "IP": "54.244.128.1"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "54.245.0.0/16",
+        "IP": "54.245.127.255"
+      },
+      {
+        "Region": "us-west-2",
+        "IP Prefix": "100.20.0.0/14",
+        "IP": "100.20.0.0"
+      }
+    ],
+    "Denver, US": [
+      {
+        "Region": "us-west-2-den-1",
+        "IP Prefix": "15.181.16.0/20",
+        "IP": "15.181.17.111"
+      }
+    ],
+    "Las Vegas, US": [
+      {
+        "Region": "us-west-2-las-1",
+        "IP Prefix": "15.220.16.0/20",
+        "IP": "15.220.16.151"
+      }
+    ],
+    "Los Angeles, US": [
+      {
+        "Region": "us-west-2-lax-1",
+        "IP Prefix": "15.253.0.0/17",
+        "IP": "15.253.0.254"
+      },
+      {
+        "Region": "us-west-2-lax-1",
+        "IP Prefix": "15.253.128.0/17",
+        "IP": "15.253.128.254"
+      },
+      {
+        "Region": "us-west-2-lax-1",
+        "IP Prefix": "15.254.0.0/16",
+        "IP": "15.254.0.254"
+      },
+      {
+        "Region": "us-west-2-lax-1",
+        "IP Prefix": "70.224.192.0/18",
+        "IP": "70.224.224.253"
+      }
+    ],
+    "Portland, US": [
+      {
+        "Region": "us-west-2-pdx-1",
+        "IP Prefix": "15.220.0.0/20",
+        "IP": "15.220.0.197"
+      }
+    ],
+    "Phoenix, US": [
+      {
+        "Region": "us-west-2-phx-1",
+        "IP Prefix": "15.181.128.0/20",
+        "IP": "15.181.128.217"
+      }
+    ],
+    "Seattle, US": [
+      {
+        "Region": "us-west-2-sea-1",
+        "IP Prefix": "15.181.0.0/20",
+        "IP": "15.181.0.179"
+      }
+    ],
+    "AWS GovCloud (US) West": [
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "3.30.0.0/15",
+        "IP": "3.30.0.254"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "3.32.0.0/16",
+        "IP": "3.32.0.253"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "15.200.0.0/16",
+        "IP": "15.200.0.254"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "15.205.0.0/16",
+        "IP": "15.205.0.254"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "52.61.0.0/16",
+        "IP": "52.61.0.254"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "52.222.0.0/17",
+        "IP": "52.222.9.163"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "96.127.0.0/17",
+        "IP": "96.127.100.10"
+      },
+      {
+        "Region": "us-gov-west-1",
+        "IP Prefix": "160.1.0.0/16",
+        "IP": "160.1.0.254"
+      }
+    ]
+  },
+  "Canada": {
+    "Central": [
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "3.96.0.0/15",
+        "IP": "3.96.0.0"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "3.98.0.0/15",
+        "IP": "3.98.0.0"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "15.156.0.0/15",
+        "IP": "15.156.0.0"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "15.222.0.0/15",
+        "IP": "15.222.0.0"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "35.182.0.0/15",
+        "IP": "35.182.0.251"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "52.60.0.0/16",
+        "IP": "52.60.50.0"
+      },
+      {
+        "Region": "ca-central-1",
+        "IP Prefix": "99.79.0.0/16",
+        "IP": "99.79.0.0"
+      }
+    ]
+  },
+  "South America": {
+    "S\u00c3\u00a3o Paulo": [
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "15.228.0.0/15",
+        "IP": "15.228.0.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "18.228.0.0/16",
+        "IP": "18.228.0.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "18.229.0.0/16",
+        "IP": "18.229.0.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "18.230.0.0/16",
+        "IP": "18.230.0.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "18.231.0.0/16",
+        "IP": "18.231.0.252"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "52.67.0.0/16",
+        "IP": "52.67.255.254"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.94.0.0/17",
+        "IP": "54.94.0.66"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.94.128.0/17",
+        "IP": "54.94.191.252"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.207.0.0/16",
+        "IP": "54.207.127.254"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.232.0.0/16",
+        "IP": "54.232.127.254"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.233.0.0/18",
+        "IP": "54.233.0.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.233.64.0/18",
+        "IP": "54.233.127.252"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "54.233.128.0/17",
+        "IP": "54.233.192.0"
+      },
+      {
+        "Region": "sa-east-1",
+        "IP Prefix": "177.71.128.0/17",
+        "IP": "177.71.255.255"
+      }
+    ]
+  },
+  "Europe": {
+    "Frankfurt": [
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "3.64.0.0/12",
+        "IP": "3.64.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "3.120.0.0/14",
+        "IP": "3.120.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "3.124.0.0/14",
+        "IP": "3.124.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.153.0.0/16",
+        "IP": "18.153.7.254"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.156.0.0/14",
+        "IP": "18.156.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.184.0.0/15",
+        "IP": "18.184.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.192.0.0/15",
+        "IP": "18.192.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.194.0.0/15",
+        "IP": "18.194.0.252"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.196.0.0/15",
+        "IP": "18.196.0.253"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "18.198.0.0/15",
+        "IP": "18.198.0.0"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "35.156.0.0/14",
+        "IP": "35.156.63.252"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "52.28.0.0/16",
+        "IP": "52.28.63.252"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "52.29.0.0/16",
+        "IP": "52.29.63.252"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "52.57.0.0/16",
+        "IP": "52.57.255.254"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "52.58.0.0/15",
+        "IP": "52.58.63.252"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "54.93.0.0/17",
+        "IP": "54.93.32.2"
+      },
+      {
+        "Region": "eu-central-1",
+        "IP Prefix": "54.93.128.0/17",
+        "IP": "54.93.162.162"
+      }
+    ],
+    "Hamburg, Germany": [
+      {
+        "Region": "eu-central-1-ham-1",
+        "IP Prefix": "15.220.152.0/21",
+        "IP": "15.220.153.88"
+      }
+    ],
+    "Warsaw, Poland": [
+      {
+        "Region": "eu-central-1-waw-1",
+        "IP Prefix": "15.220.64.0/20",
+        "IP": "15.220.64.15"
+      }
+    ],
+    "Ireland": [
+      { "Region": "eu-west-1", "IP Prefix": "3.248.0.0/13", "IP": "3.248.0.0" },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "18.200.0.0/16",
+        "IP": "18.200.0.0"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "18.201.0.0/16",
+        "IP": "18.201.2.254"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "18.202.0.0/15",
+        "IP": "18.202.0.0"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "34.240.0.0/13",
+        "IP": "34.240.0.253"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "34.248.0.0/13",
+        "IP": "34.248.60.213"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "46.51.128.0/18",
+        "IP": "46.51.178.50"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "46.137.0.0/17",
+        "IP": "46.137.120.1"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "46.137.128.0/18",
+        "IP": "46.137.191.254"
+      },
+      { "Region": "eu-west-1", "IP Prefix": "52.16.0.0/15", "IP": "52.16.0.2" },
+      { "Region": "eu-west-1", "IP Prefix": "52.18.0.0/15", "IP": "52.19.0.2" },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "52.30.0.0/15",
+        "IP": "52.30.63.252"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "52.48.0.0/14",
+        "IP": "52.48.63.252"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "52.208.0.0/13",
+        "IP": "52.215.255.254"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.72.0.0/16",
+        "IP": "54.72.255.252"
+      },
+      { "Region": "eu-west-1", "IP Prefix": "54.73.0.0/16", "IP": "54.73.0.1" },
+      { "Region": "eu-west-1", "IP Prefix": "54.74.0.0/15", "IP": "54.74.0.1" },
+      { "Region": "eu-west-1", "IP Prefix": "54.76.0.0/15", "IP": "54.76.0.3" },
+      { "Region": "eu-west-1", "IP Prefix": "54.78.0.0/16", "IP": "54.78.0.3" },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.154.0.0/16",
+        "IP": "54.154.63.252"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.155.0.0/16",
+        "IP": "54.155.0.1"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.170.0.0/16",
+        "IP": "54.170.248.3"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.171.0.0/16",
+        "IP": "54.171.63.252"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.194.0.0/15",
+        "IP": "54.194.255.254"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.216.0.0/15",
+        "IP": "54.216.0.1"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.220.0.0/16",
+        "IP": "54.220.0.0"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.228.0.0/16",
+        "IP": "54.228.250.251"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.229.0.0/16",
+        "IP": "54.229.0.1"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.246.0.0/16",
+        "IP": "54.246.127.255"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.247.0.0/16",
+        "IP": "54.247.127.254"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "54.247.192.0/18",
+        "IP": "54.247.192.254"
+      },
+      { "Region": "eu-west-1", "IP Prefix": "63.32.0.0/14", "IP": "63.32.0.0" },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "79.125.0.0/17",
+        "IP": "79.125.120.9"
+      },
+      { "Region": "eu-west-1", "IP Prefix": "99.80.0.0/15", "IP": "99.80.0.0" },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "108.128.0.0/13",
+        "IP": "108.128.0.0"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "176.34.64.0/18",
+        "IP": "176.34.127.254"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "176.34.128.0/17",
+        "IP": "176.34.255.255"
+      },
+      {
+        "Region": "eu-west-1",
+        "IP Prefix": "185.48.120.0/22",
+        "IP": "185.48.120.66"
+      }
+    ],
+    "London": [
+      { "Region": "eu-west-2", "IP Prefix": "3.8.0.0/14", "IP": "3.8.0.0" },
+      { "Region": "eu-west-2", "IP Prefix": "13.40.0.0/14", "IP": "13.40.0.0" },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "18.130.0.0/16",
+        "IP": "18.130.0.0"
+      },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "18.132.0.0/14",
+        "IP": "18.132.0.0"
+      },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "18.168.0.0/14",
+        "IP": "18.168.0.0"
+      },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "18.175.0.0/16",
+        "IP": "18.175.28.254"
+      },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "35.176.0.0/15",
+        "IP": "35.176.0.252"
+      },
+      {
+        "Region": "eu-west-2",
+        "IP Prefix": "35.178.0.0/15",
+        "IP": "35.178.0.253"
+      },
+      { "Region": "eu-west-2", "IP Prefix": "52.56.0.0/16", "IP": "52.56.34.0" }
+    ],
+    "Milan": [
+      {
+        "Region": "eu-south-1",
+        "IP Prefix": "15.160.0.0/16",
+        "IP": "15.160.0.0"
+      },
+      {
+        "Region": "eu-south-1",
+        "IP Prefix": "15.161.0.0/16",
+        "IP": "15.161.0.254"
+      },
+      {
+        "Region": "eu-south-1",
+        "IP Prefix": "18.102.0.0/16",
+        "IP": "18.102.0.0"
+      },
+      {
+        "Region": "eu-south-1",
+        "IP Prefix": "35.152.0.0/16",
+        "IP": "35.152.128.254"
+      }
+    ],
+    "Paris": [
+      { "Region": "eu-west-3", "IP Prefix": "13.36.0.0/14", "IP": "13.36.0.0" },
+      {
+        "Region": "eu-west-3",
+        "IP Prefix": "15.188.0.0/16",
+        "IP": "15.188.0.0"
+      },
+      {
+        "Region": "eu-west-3",
+        "IP Prefix": "15.236.0.0/15",
+        "IP": "15.236.0.0"
+      },
+      {
+        "Region": "eu-west-3",
+        "IP Prefix": "35.180.0.0/16",
+        "IP": "35.180.0.253"
+      },
+      {
+        "Region": "eu-west-3",
+        "IP Prefix": "35.181.0.0/16",
+        "IP": "35.181.0.0"
+      },
+      {
+        "Region": "eu-west-3",
+        "IP Prefix": "52.47.0.0/16",
+        "IP": "52.47.32.127"
+      }
+    ],
+    "Spain": [
+      {
+        "Region": "eu-south-2",
+        "IP Prefix": "18.100.0.0/15",
+        "IP": "18.100.135.187"
+      }
+    ],
+    "Stockholm": [
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "13.48.0.0/15",
+        "IP": "13.48.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "13.50.0.0/16",
+        "IP": "13.50.0.254"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "13.51.0.0/16",
+        "IP": "13.51.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "13.53.0.0/16",
+        "IP": "13.53.128.254"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "16.16.0.0/16",
+        "IP": "16.16.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "16.170.0.0/15",
+        "IP": "16.170.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "51.20.0.0/16",
+        "IP": "51.20.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "51.21.0.0/16",
+        "IP": "51.21.0.0"
+      },
+      {
+        "Region": "eu-north-1",
+        "IP Prefix": "63.246.112.0/24",
+        "IP": "63.246.112.254"
+      }
+    ],
+    "Copenhagen, Denmark": [
+      {
+        "Region": "eu-north-1-cph-1",
+        "IP Prefix": "96.0.24.0/21",
+        "IP": "96.0.25.211"
+      }
+    ],
+    "Helsinki, Finland": [
+      {
+        "Region": "eu-north-1-hel-1",
+        "IP Prefix": "15.220.168.0/21",
+        "IP": "15.220.168.114"
+      }
+    ],
+    "Zurich": [
+      {
+        "Region": "eu-central-2",
+        "IP Prefix": "16.62.0.0/15",
+        "IP": "16.62.132.214"
+      },
+      {
+        "Region": "eu-central-2",
+        "IP Prefix": "51.96.0.0/16",
+        "IP": "51.96.0.0"
+      }
+    ]
+  },
+  "Africa": {
+    "Cape Town": [
+      {
+        "Region": "af-south-1",
+        "IP Prefix": "13.244.0.0/15",
+        "IP": "13.245.0.253"
+      },
+      {
+        "Region": "af-south-1",
+        "IP Prefix": "13.246.0.0/16",
+        "IP": "13.246.0.0"
+      },
+      {
+        "Region": "af-south-1",
+        "IP Prefix": "13.247.0.0/16",
+        "IP": "13.247.0.0"
+      }
+    ],
+    "Lagos, Nigeria": [
+      {
+        "Region": "af-south-1-los-1",
+        "IP Prefix": "96.0.40.0/21",
+        "IP": "96.0.40.228"
+      }
+    ]
+  },
+  "Middle East": {
+    "Bahrain": [
+      {
+        "Region": "me-south-1",
+        "IP Prefix": "15.184.0.0/16",
+        "IP": "15.184.0.253"
+      },
+      {
+        "Region": "me-south-1",
+        "IP Prefix": "15.185.0.0/16",
+        "IP": "15.185.32.254"
+      },
+      {
+        "Region": "me-south-1",
+        "IP Prefix": "16.24.0.0/16",
+        "IP": "16.24.0.0"
+      },
+      {
+        "Region": "me-south-1",
+        "IP Prefix": "157.175.0.0/16",
+        "IP": "157.175.10.11"
+      }
+    ],
+    "Israel": [
+      {
+        "Region": "il-central-1",
+        "IP Prefix": "51.16.0.0/15",
+        "IP": "51.16.235.176"
+      }
+    ],
+    "Muscat, Oman": [
+      {
+        "Region": "me-south-1-mct-1",
+        "IP Prefix": "15.220.160.0/21",
+        "IP": "15.220.161.219"
+      }
+    ],
+    "UAE": [
+      {
+        "Region": "me-central-1",
+        "IP Prefix": "3.28.0.0/15",
+        "IP": "3.28.180.35"
+      },
+      {
+        "Region": "me-central-1",
+        "IP Prefix": "51.112.0.0/16",
+        "IP": "51.112.0.0"
+      }
+    ]
+  },
+  "Asia Pacific": {
+    "Hong Kong": [
+      {
+        "Region": "ap-east-1",
+        "IP Prefix": "16.162.0.0/15",
+        "IP": "16.162.0.253"
+      },
+      {
+        "Region": "ap-east-1",
+        "IP Prefix": "18.162.0.0/16",
+        "IP": "18.162.80.8"
+      },
+      {
+        "Region": "ap-east-1",
+        "IP Prefix": "18.163.0.0/16",
+        "IP": "18.163.0.253"
+      },
+      {
+        "Region": "ap-east-1",
+        "IP Prefix": "18.166.0.0/15",
+        "IP": "18.166.0.253"
+      },
+      {
+        "Region": "ap-east-1",
+        "IP Prefix": "43.198.0.0/15",
+        "IP": "43.198.0.0"
+      }
+    ],
+    "Hyderabad": [
+      {
+        "Region": "ap-south-2",
+        "IP Prefix": "18.60.0.0/15",
+        "IP": "18.60.8.120"
+      },
+      {
+        "Region": "ap-south-2",
+        "IP Prefix": "98.130.0.0/16",
+        "IP": "98.130.0.0"
+      }
+    ],
+    "Jakarta": [
+      {
+        "Region": "ap-southeast-3",
+        "IP Prefix": "43.218.0.0/16",
+        "IP": "43.218.0.0"
+      },
+      {
+        "Region": "ap-southeast-3",
+        "IP Prefix": "108.136.0.0/15",
+        "IP": "108.136.157.181"
+      }
+    ],
+    "Melbourne": [
+      {
+        "Region": "ap-southeast-4",
+        "IP Prefix": "16.50.0.0/15",
+        "IP": "16.50.164.255"
+      }
+    ],
+    "Mumbai": [
+      { "Region": "ap-south-1", "IP Prefix": "3.6.0.0/15", "IP": "3.6.0.0" },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "3.108.0.0/14",
+        "IP": "3.108.0.0"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "13.126.0.0/15",
+        "IP": "13.126.0.252"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "13.200.0.0/15",
+        "IP": "13.200.0.0"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "13.232.0.0/14",
+        "IP": "13.232.0.253"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "15.206.0.0/15",
+        "IP": "15.206.0.0"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "35.154.0.0/16",
+        "IP": "35.154.63.252"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "43.204.0.0/15",
+        "IP": "43.204.0.0"
+      },
+      {
+        "Region": "ap-south-1",
+        "IP Prefix": "52.66.0.0/16",
+        "IP": "52.66.66.2"
+      },
+      { "Region": "ap-south-1", "IP Prefix": "65.0.0.0/14", "IP": "65.0.0.0" }
+    ],
+    "Delhi, India": [
+      {
+        "Region": "ap-south-1-del-1",
+        "IP Prefix": "15.220.136.0/21",
+        "IP": "15.220.136.77"
+      }
+    ],
+    "Kolkata, India": [
+      {
+        "Region": "ap-south-1-ccu-1",
+        "IP Prefix": "96.0.64.0/21",
+        "IP": "96.0.64.213"
+      }
+    ],
+    "Osaka": [
+      {
+        "Region": "ap-northeast-3",
+        "IP Prefix": "13.208.0.0/16",
+        "IP": "13.208.32.253"
+      },
+      {
+        "Region": "ap-northeast-3",
+        "IP Prefix": "15.152.0.0/16",
+        "IP": "15.152.0.254"
+      },
+      {
+        "Region": "ap-northeast-3",
+        "IP Prefix": "15.168.0.0/16",
+        "IP": "15.168.0.0"
+      }
+    ],
+    "Seoul": [
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "3.34.0.0/15",
+        "IP": "3.34.0.0"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "3.36.0.0/14",
+        "IP": "3.36.0.0"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "13.124.0.0/16",
+        "IP": "13.124.63.251"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "13.125.0.0/16",
+        "IP": "13.125.0.253"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "13.209.0.0/16",
+        "IP": "13.209.0.0"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "15.164.0.0/15",
+        "IP": "15.164.0.0"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "43.200.0.0/14",
+        "IP": "43.200.0.0"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "52.78.0.0/16",
+        "IP": "52.78.63.252"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "52.79.0.0/16",
+        "IP": "52.79.52.64"
+      },
+      {
+        "Region": "ap-northeast-2",
+        "IP Prefix": "54.180.0.0/15",
+        "IP": "54.180.0.0"
+      }
+    ],
+    "Singapore": [
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "3.0.0.0/15",
+        "IP": "3.0.0.9"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "13.212.0.0/15",
+        "IP": "13.212.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "13.214.0.0/15",
+        "IP": "13.214.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "13.228.0.0/15",
+        "IP": "13.228.0.251"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "13.250.0.0/15",
+        "IP": "13.250.0.253"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "18.136.0.0/16",
+        "IP": "18.136.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "18.138.0.0/15",
+        "IP": "18.138.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "18.140.0.0/15",
+        "IP": "18.140.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "18.142.0.0/15",
+        "IP": "18.142.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "46.51.216.0/21",
+        "IP": "46.51.216.14"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "46.137.192.0/18",
+        "IP": "46.137.255.254"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "47.128.0.0/14",
+        "IP": "47.128.0.0"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "52.74.0.0/16",
+        "IP": "52.74.0.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "52.76.0.0/17",
+        "IP": "52.76.0.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "52.76.128.0/17",
+        "IP": "52.76.191.252"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "52.77.0.0/16",
+        "IP": "52.77.63.252"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "52.220.0.0/15",
+        "IP": "52.221.255.252"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.151.128.0/17",
+        "IP": "54.151.128.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.169.0.0/17",
+        "IP": "54.169.0.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.169.128.0/17",
+        "IP": "54.169.191.253"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.179.0.0/17",
+        "IP": "54.179.0.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.179.128.0/17",
+        "IP": "54.179.191.252"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.251.0.0/16",
+        "IP": "54.251.63.255"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.254.0.0/16",
+        "IP": "54.254.128.1"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "54.255.0.0/16",
+        "IP": "54.255.0.2"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "122.248.192.0/18",
+        "IP": "122.248.255.254"
+      },
+      {
+        "Region": "ap-southeast-1",
+        "IP Prefix": "175.41.128.0/18",
+        "IP": "175.41.146.190"
+      }
+    ],
+    "Bangkok, Thailand": [
+      {
+        "Region": "ap-southeast-1-bkk-1",
+        "IP Prefix": "15.220.240.0/21",
+        "IP": "15.220.241.70"
+      }
+    ],
+    "Manila, Philippines": [
+      {
+        "Region": "ap-southeast-1-mnl-1",
+        "IP Prefix": "96.0.144.0/21",
+        "IP": "96.0.144.147"
+      }
+    ],
+    "Sydney": [
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "3.24.0.0/14",
+        "IP": "3.24.0.0"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "3.104.0.0/14",
+        "IP": "3.104.0.0"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "13.54.0.0/15",
+        "IP": "13.54.63.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "13.210.0.0/15",
+        "IP": "13.210.0.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "13.236.0.0/14",
+        "IP": "13.236.0.253"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "52.62.0.0/15",
+        "IP": "52.62.63.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "52.64.0.0/17",
+        "IP": "52.64.63.253"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "52.64.128.0/17",
+        "IP": "52.64.191.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "52.65.0.0/16",
+        "IP": "52.65.63.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.66.0.0/17",
+        "IP": "54.66.0.2"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.66.128.0/17",
+        "IP": "54.66.191.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.79.0.0/16",
+        "IP": "54.79.127.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.153.128.0/17",
+        "IP": "54.153.191.252"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.206.0.0/17",
+        "IP": "54.206.127.254"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.206.128.0/17",
+        "IP": "54.206.128.2"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.252.0.0/16",
+        "IP": "54.252.88.8"
+      },
+      {
+        "Region": "ap-southeast-2",
+        "IP Prefix": "54.253.0.0/16",
+        "IP": "54.253.0.1"
+      }
+    ],
+    "Auckland, New Zealand": [
+      {
+        "Region": "ap-southeast-2-akl-1",
+        "IP Prefix": "96.0.72.0/21",
+        "IP": "96.0.72.143"
+      }
+    ],
+    "Perth, Australia": [
+      {
+        "Region": "ap-southeast-2-per-1",
+        "IP Prefix": "96.0.0.0/21",
+        "IP": "96.0.1.218"
+      }
+    ],
+    "Tokyo": [
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "3.112.0.0/14",
+        "IP": "3.112.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "13.112.0.0/14",
+        "IP": "13.112.63.251"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "13.230.0.0/15",
+        "IP": "13.230.0.253"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.176.0.0/15",
+        "IP": "18.176.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.178.0.0/16",
+        "IP": "18.178.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.179.0.0/16",
+        "IP": "18.179.0.8"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.180.0.0/15",
+        "IP": "18.180.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.182.0.0/16",
+        "IP": "18.182.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "18.183.0.0/16",
+        "IP": "18.183.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "35.72.0.0/13",
+        "IP": "35.72.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "43.206.0.0/15",
+        "IP": "43.206.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "46.51.224.0/19",
+        "IP": "46.51.255.254"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "52.68.0.0/15",
+        "IP": "52.68.63.252"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "52.192.0.0/15",
+        "IP": "52.192.63.252"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "52.194.0.0/15",
+        "IP": "52.194.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "52.196.0.0/14",
+        "IP": "52.196.63.252"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.64.0.0/15",
+        "IP": "54.64.0.2"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.92.0.0/17",
+        "IP": "54.92.0.2"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.95.0.0/16",
+        "IP": "54.95.0.2"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.150.0.0/16",
+        "IP": "54.150.0.255"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.168.0.0/16",
+        "IP": "54.168.0.2"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.178.0.0/16",
+        "IP": "54.178.0.2"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.199.0.0/16",
+        "IP": "54.199.127.255"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.238.0.0/16",
+        "IP": "54.238.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.248.0.0/15",
+        "IP": "54.248.127.254"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "54.250.0.0/16",
+        "IP": "54.250.128.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "57.180.0.0/14",
+        "IP": "57.180.0.0"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "103.4.8.0/21",
+        "IP": "103.4.10.139"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "175.41.192.0/18",
+        "IP": "175.41.248.202"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "176.32.64.0/19",
+        "IP": "176.32.95.254"
+      },
+      {
+        "Region": "ap-northeast-1",
+        "IP Prefix": "176.34.0.0/18",
+        "IP": "176.34.56.254"
+      }
+    ],
+    "Taipei, Taiwan": [
+      {
+        "Region": "ap-northeast-1-tpe-1",
+        "IP Prefix": "15.220.80.0/20",
+        "IP": "15.220.82.27"
+      }
+    ]
+  },
+  "China": {
+    "Beijing": [
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "43.196.0.0/16",
+        "IP": "43.196.0.253"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "52.80.0.0/16",
+        "IP": "52.80.5.207"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "52.81.0.0/16",
+        "IP": "52.81.0.253"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "54.222.128.0/17",
+        "IP": "54.222.240.4"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "54.223.0.0/16",
+        "IP": "54.223.48.68"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "71.131.192.0/18",
+        "IP": "71.131.192.3"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "71.132.0.0/18",
+        "IP": "71.132.0.3"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "71.136.64.0/18",
+        "IP": "71.136.64.254"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "71.137.0.0/18",
+        "IP": "71.137.0.252"
+      },
+      {
+        "Region": "cn-north-1",
+        "IP Prefix": "140.179.0.0/16",
+        "IP": "140.179.0.253"
+      }
+    ],
+    "Ningxia": [
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "43.192.0.0/16",
+        "IP": "43.192.0.113"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "43.193.0.0/17",
+        "IP": "43.193.0.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "52.82.0.0/16",
+        "IP": "52.82.0.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "52.83.0.0/16",
+        "IP": "52.83.214.0"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "68.79.0.0/18",
+        "IP": "68.79.0.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "69.230.192.0/18",
+        "IP": "69.230.192.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "69.231.128.0/18",
+        "IP": "69.231.128.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "69.234.192.0/18",
+        "IP": "69.234.192.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "69.235.128.0/18",
+        "IP": "69.235.128.253"
+      },
+      {
+        "Region": "cn-northwest-1",
+        "IP Prefix": "161.189.0.0/16",
+        "IP": "161.189.0.253"
+      }
+    ]
+  }
+}

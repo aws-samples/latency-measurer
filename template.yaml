@@ -1,0 +1,803 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+
+  Function:
+    Timeout: 5
+    MemorySize: 128
+    Runtime: python3.12
+    Architectures:
+      - x86_64
+    Tracing: Active
+    Environment:
+      Variables:
+        POWERTOOLS_SERVICE_NAME: Powertools
+        LOG_LEVEL: INFO
+    Handler: app.handler
+
+Resources:
+
+  Bucket:
+    Type: AWS::S3::Bucket
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W35
+            reason: Access logging not required
+          - id: W41
+            reason: Encyption not required
+          - id: W51
+            reason: Bucket policy not required
+    Properties:
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: True
+
+  ScraperFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: VPC not required
+          - id: W92
+            reason: ReservedConcurrentExecutions not required
+    Properties:
+      Timeout: 30
+      CodeUri: functions/scraper
+      Description: Automates scraping of data from EC2 Reachability Test site.
+      Layers:
+        - !Sub arn:${AWS::Partition}:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:62
+      Environment:
+        Variables:
+          URL: http://ec2-reachability.amazonaws.com/
+          BUCKET_NAME: !Ref Bucket
+          OUTPUT_KEY: ipsets.json
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource: !Sub ${Bucket.Arn}/ipsets.json
+
+  ReachabilityParserLayer:
+    Type: AWS::Serverless::LayerVersion
+    Metadata:
+      BuildMethod: python3.12
+      BuildArchitecture: x86_64
+    Properties:
+      CompatibleArchitectures:
+        - x86_64
+      CompatibleRuntimes:
+        - python3.12
+      Description: Generic method to pre-process the output from the Reachability site to compatible json.
+      ContentUri: layers/reachability
+      RetentionPolicy: Delete
+
+  Api:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors: "'*'"
+      TracingEnabled: true
+      Auth:
+        ApiKeyRequired: True
+
+  ApiUsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    Properties:
+      ApiStages:
+        - ApiId: !Ref Api
+          Stage: !Ref ApiprodStage
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: VPC not required
+          - id: W92
+            reason: ReservedConcurrentExecutions not required
+    Properties:
+      CodeUri: functions/api
+      Description: Handles requests made to API Gateway.
+      Layers:
+        - !Sub arn:${AWS::Partition}:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:62
+        - !Ref ReachabilityParserLayer
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref Bucket
+          IPSETS_S3_KEY: ipsets.json
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Sub ${Bucket.Arn}/ipsets.json
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource: !Sub ${Bucket.Arn}/results/*
+      Events:
+        Get:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+            RestApiId: !Ref Api
+
+  TriggerFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: VPC not required
+          - id: W92
+            reason: ReservedConcurrentExecutions not required
+          - id: W11
+            reason: Resource level permissions not available on this api call.
+    Properties:
+      CodeUri: functions/trigger
+      Description: Automates creation of SSM parent document from S3 events.
+      Layers:
+        - !Sub arn:${AWS::Partition}:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:62
+        - !Ref ReachabilityParserLayer
+      Environment:
+        Variables:
+          IPSETS_S3_KEY: ipsets.json
+          STACK_NAME: !Ref AWS::StackName
+          API_ENDPOINT: !Sub https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}/prod
+          SECRET_ID: !Ref ApiKeySecret
+          COMMAND_DOCUMENT: !Ref PingDocument
+          ATHENA_CATALOG: !Ref AWS::AccountId
+          ATHENA_DATABASE: !Ref LatencyCheckerDatabase
+          ATHENA_S3_URI: !Sub s3://${Bucket}/athena
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Sub ${Bucket.Arn}/ipsets.json
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+                - s3:DeleteObject
+              Resource: !Sub ${Bucket.Arn}/lookups/lookups.json.gz
+            - Effect: Allow
+              Action:
+                - ssm:ListDocuments
+              Resource: "*"
+            - Effect: Allow
+              Action:
+                - ssm:CreateDocument
+                - ssm:DeleteDocument
+              Resource: !Sub arn:${AWS::Partition}:ssm:${AWS::Region}:${AWS::AccountId}:document/${AWS::StackName}
+      Events:
+        IpSetsFile:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail-type:
+                - Object Created
+                - Object Deleted
+              detail:
+                bucket:
+                  name:
+                    - !Ref Bucket
+                object:
+                  key:
+                    - ipsets.json
+
+  PingDocument:
+    Type: AWS::SSM::Document
+    Properties:
+      DocumentType: Command
+      DocumentFormat: YAML
+      TargetType: /AWS::EC2::Instance
+      Content:
+        "Fn::Transform":
+          Name: AWS::Include
+          Parameters:
+            Location: document.yaml
+
+  LatencyCheckerDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        CreateTableDefaultPermissions:
+          - Permissions:
+              - ALL
+            Principal:
+              DataLakePrincipalIdentifier: IAM_ALLOWED_PRINCIPALS
+
+  LookupsTable:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref LatencyCheckerDatabase
+      TableInput:
+        Name: lookups
+        TableType: EXTERNAL_TABLE
+        Parameters:
+          compressionType: gzip
+          classification: json
+          typeOfData: file
+        StorageDescriptor:
+          Columns:
+            - Name: ipset
+              Type: string
+            - Name: area
+              Type: string
+            - Name: location
+              Type: string
+            - Name: region
+              Type: string
+          Location: !Sub s3://${Bucket}/lookups/
+          InputFormat: org.apache.hadoop.mapred.TextInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+          Compressed: True
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.openx.data.jsonserde.JsonSerDe
+            Parameters:
+              paths: Area,Location,Region,ipset
+          Parameters:
+            compressionType: gzip
+            classification: json
+            typeOfData: file
+          StoredAsSubDirectories: False
+
+  LatencyTable:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref LatencyCheckerDatabase
+      TableInput:
+        Name: latency
+        TableType: EXTERNAL_TABLE
+        Parameters:
+          compressionType: gzip
+          classification: json
+          typeOfData: file
+        PartitionKeys:
+          - Name: ipset
+            Type: string
+          - Name: host
+            Type: string
+          - Name: year
+            Type: string
+          - Name: month
+            Type: string
+          - Name: day
+            Type: string
+          - Name: hour
+            Type: string
+          - Name: minute
+            Type: string
+        StorageDescriptor:
+          Columns:
+            - Name: destination
+              Type: string
+            - Name: packet_transmit
+              Type: int
+            - Name: packet_receive
+              Type: int
+            - Name: packet_loss_count
+              Type: int
+            - Name: packet_loss_rate
+              Type: double
+            - Name: rtt_min
+              Type: double
+            - Name: rtt_avg
+              Type: double
+            - Name: rtt_max
+              Type: double
+            - Name: rtt_mdev
+              Type: double
+          Location: !Sub s3://${Bucket}/results/
+          InputFormat: org.apache.hadoop.mapred.TextInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+          Compressed: True
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.openx.data.jsonserde.JsonSerDe
+            Parameters:
+              paths: destination,packet_loss_count,packet_loss_rate,packet_receive,packet_transmit,rtt_avg,rtt_max,rtt_mdev,rtt_min
+          Parameters:
+            compressionType: gzip
+            classification: json
+            typeOfData: file
+          StoredAsSubDirectories: False
+
+  DataSource:
+    Type: AWS::QuickSight::DataSource
+    Properties:
+      Type: ATHENA
+      AwsAccountId: !Ref AWS::AccountId
+      Name: !Ref LatencyCheckerDatabase
+      DataSourceId: !Select [2, !Split ["/", !Ref AWS::StackId]]
+
+  LookupsDataSet:
+    Type: AWS::QuickSight::DataSet
+    Properties:
+      DataSetId: !Sub
+        - lookups-${id}
+        - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+      AwsAccountId: !Ref AWS::AccountId
+      Name: !Ref LookupsTable
+      ImportMode: DIRECT_QUERY
+      LogicalTableMap:
+        table:
+          Alias: !Ref LookupsTable
+          Source:
+            PhysicalTableId: table
+      PhysicalTableMap:
+        table:
+          RelationalTable:
+            DataSourceArn: !GetAtt DataSource.Arn
+            Catalog: AwsDataCatalog
+            Schema: !Ref LatencyCheckerDatabase
+            Name: !Ref LookupsTable
+            InputColumns:
+              - Name: ipset
+                Type: STRING
+              - Name: area
+                Type: STRING
+              - Name: location
+                Type: STRING
+              - Name: region
+                Type: STRING
+
+  LatencyDataSet:
+    Type: AWS::QuickSight::DataSet
+    Properties:
+      DataSetId: !Sub
+        - latency-${id}
+        - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+      AwsAccountId: !Ref AWS::AccountId
+      Name: !Ref LatencyTable
+      ImportMode: DIRECT_QUERY
+      LogicalTableMap:
+        table:
+          Alias: !Ref LatencyTable
+          Source:
+            PhysicalTableId: table
+      PhysicalTableMap:
+        table:
+          RelationalTable:
+            DataSourceArn: !GetAtt DataSource.Arn
+            Catalog: AwsDataCatalog
+            Schema: !Ref LatencyCheckerDatabase
+            Name: !Ref LatencyTable
+            InputColumns:
+              - Name: destination
+                Type: STRING
+              - Name: packet_transmit
+                Type: INTEGER
+              - Name: packet_receive
+                Type: INTEGER
+              - Name: packet_loss_count
+                Type: INTEGER
+              - Name: packet_loss_rate
+                Type: DECIMAL
+              - Name: rtt_min
+                Type: DECIMAL
+              - Name: rtt_avg
+                Type: DECIMAL
+              - Name: rtt_max
+                Type: DECIMAL
+              - Name: rtt_mdev
+                Type: DECIMAL
+              - Name: ipset
+                Type: STRING
+              - Name: host
+                Type: STRING
+              - Name: year
+                Type: STRING
+              - Name: month
+                Type: STRING
+              - Name: day
+                Type: STRING
+              - Name: hour
+                Type: STRING
+              - Name: minute
+                Type: STRING
+
+  CombinedDataSet:
+    Type: AWS::QuickSight::DataSet
+    Properties:
+      DataSetId: !Sub
+        - combined-${id}
+        - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+      AwsAccountId: !Ref AWS::AccountId
+      Name: combined
+      ImportMode: DIRECT_QUERY
+      LogicalTableMap:
+        left:
+          Alias: !Ref LatencyTable
+          Source:
+            DataSetArn: !GetAtt LatencyDataSet.Arn
+        right:
+          Alias: !Ref LookupsTable
+          Source:
+            DataSetArn: !GetAtt LookupsDataSet.Arn
+          DataTransforms:
+            - RenameColumnOperation:
+                ColumnName: ipset
+                NewColumnName: ipset2
+        join:
+          Alias: join
+          Source:
+            JoinInstruction:
+              LeftOperand: left
+              RightOperand: right
+              RightJoinKeyProperties:
+                UniqueKey: True
+              Type: LEFT
+              OnClause: "ipset = {ipset2}"
+          DataTransforms:
+            - ProjectOperation:
+                ProjectedColumns:
+                  - destination
+                  - packet_transmit
+                  - packet_receive
+                  - packet_loss_count
+                  - packet_loss_rate
+                  - rtt_min
+                  - rtt_avg
+                  - rtt_max
+                  - rtt_mdev
+                  - ipset
+                  - host
+                  - year
+                  - month
+                  - day
+                  - hour
+                  - minute
+                  - area
+                  - location
+                  - region
+
+  Analysis:
+    Type: AWS::QuickSight::Analysis
+    Properties:
+      Name: combined analysis
+      AnalysisId: !Sub
+        - analysis-${id}
+        - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+      AwsAccountId: !Ref AWS::AccountId
+      ValidationStrategy:
+        Mode: LENIENT
+      Definition:
+        AnalysisDefaults:
+          DefaultNewSheetConfiguration:
+            InteractiveLayoutConfiguration:
+              Grid:
+                CanvasSizeOptions:
+                  ScreenCanvasSizeOptions:
+                    OptimizedViewPortWidth: 1600px
+                    ResizeOption: FIXED
+            SheetContentType: INTERACTIVE
+        DataSetIdentifierDeclarations:
+          - Identifier: combined
+            DataSetArn: !GetAtt CombinedDataSet.Arn
+        Options:
+          WeekStart: SUNDAY
+        Sheets:
+          - SheetId: !Sub
+              - sheet-${id}
+              - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+            Name: Latency Sheet
+            ContentType: INTERACTIVE
+            Layouts:
+              - Configuration:
+                  GridLayout:
+                    CanvasSizeOptions:
+                      ScreenCanvasSizeOptions:
+                        OptimizedViewPortWidth: 1600px
+                        ResizeOption: FIXED
+                    Elements:
+                      - ElementId: !Sub
+                          - visual-1-${id}
+                          - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                        ElementType: VISUAL
+                        ColumnSpan: 18
+                        RowSpan: 12
+                      - ElementId: !Sub
+                          - visual-2-${id}
+                          - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                        ElementType: VISUAL
+                        ColumnSpan: 18
+                        RowSpan: 12
+            Visuals:
+              - TableVisual:
+                  VisualId: !Sub
+                    - visual-1-${id}
+                    - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                  Title:
+                    FormatText:
+                      RichText: <visual-title>All metrics from Host to Destination</visual-title>
+                    Visibility: VISIBLE
+                  Subtitle:
+                    Visibility: VISIBLE
+                  ChartConfiguration:
+                    TableOptions:
+                      CellStyle:
+                        Height: 25
+                    FieldWells:
+                      TableAggregatedFieldWells:
+                        GroupBy:
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.host
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: host
+                                DataSetIdentifier: combined
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.region
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: region
+                                DataSetIdentifier: combined
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.location
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: location
+                                DataSetIdentifier: combined
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.area
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: area
+                                DataSetIdentifier: combined
+                        Values:
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_avg
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: AVERAGE
+                              Column:
+                                ColumnName: rtt_avg
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_max
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: MAX
+                              Column:
+                                ColumnName: rtt_max
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_min
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: MIN
+                              Column:
+                                ColumnName: rtt_min
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_mdev
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: AVERAGE
+                              Column:
+                                ColumnName: rtt_mdev
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.packet_lost_count
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: SUM
+                              Column:
+                                ColumnName: packet_loss_count
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.packet_receive
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: SUM
+                              Column:
+                                ColumnName: packet_receive
+                                DataSetIdentifier: combined
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.packet_transmit
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: SUM
+                              Column:
+                                ColumnName: packet_transmit
+                                DataSetIdentifier: combined
+              - BarChartVisual:
+                  VisualId: !Sub
+                    - visual-2-${id}
+                    - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                  Title:
+                    FormatText:
+                      RichText: <visual-title>AVG RTT by host and destination</visual-title>
+                    Visibility: VISIBLE
+                  Subtitle:
+                    Visibility: VISIBLE
+                  ChartConfiguration:
+                    Orientation: VERTICAL
+                    BarsArrangement: CLUSTERED
+                    DataLabels:
+                      Overlap: DISABLE_OVERLAP
+                      Visibility: HIDDEN
+                    CategoryLabelOptions:
+                      AxisLabelOptions:
+                        - ApplyTo:
+                            FieldId: !Sub
+                              - ${id}-table.host
+                              - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                            Column:
+                              ColumnName: host
+                              DataSetIdentifier: combined
+                          CustomLabel: Host
+                      Visibility: VISIBLE
+                    FieldWells:
+                      BarChartAggregatedFieldWells:
+                        Category:
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.host
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: host
+                                DataSetIdentifier: combined
+                        Colors:
+                          - CategoricalDimensionField:
+                              FieldId: !Sub
+                                - ${id}-table.location
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Column:
+                                ColumnName: location
+                                DataSetIdentifier: combined
+                        Values:
+                          - NumericalMeasureField:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_avg
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              AggregationFunction:
+                                SimpleNumericalAggregation: AVERAGE
+                              Column:
+                                ColumnName: rtt_avg
+                                DataSetIdentifier: combined
+                    SortConfiguration:
+                      CategoryItemsLimit:
+                        OtherCategories: INCLUDE
+                      CategorySort:
+                        - FieldSort:
+                            FieldId: !Sub
+                              - ${id}-table.host
+                              - id: !Select [2, !Split ["/", !Ref AWS::StackId]]
+                            Direction: DESC
+                      ColorItemsLimit:
+                        OtherCategories: INCLUDE
+                      SmallMultiplesLimitConfiguration:
+                        OtherCategories: INCLUDE
+                    Tooltip:
+                      FieldBasedTooltip:
+                        AggregationVisibility: HIDDEN
+                        TooltipFields:
+                          - FieldTooltipItem:
+                              FieldId: !Sub
+                                - ${id}-table.host
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Visibility: VISIBLE
+                          - FieldTooltipItem:
+                              FieldId: !Sub
+                                - ${id}-table.rtt_avg
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Visibility: VISIBLE
+                          - FieldTooltipItem:
+                              FieldId: !Sub
+                                - ${id}-table.location
+                                - id:
+                                    !Select [2, !Split ["/", !Ref AWS::StackId]]
+                              Visibility: VISIBLE
+                        TooltipTitleType: PRIMARY_VALUE
+                      SelectedTooltipType: DETAILED
+                      TooltipVisibility: VISIBLE
+
+  ApiKeySecret:
+    Type: AWS::SecretsManager::Secret
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W77
+            reason: Default AWS provided KMS for SecretsManager being used.
+    Properties:
+      SecretString: !Sub |
+        {
+          "UsagePlanId": "${ApiUsagePlan}",
+          "ApiKeyId": "",
+          "ApiKeyKey": ""
+        }
+
+  ApiKeySecretRotationSchedule:
+    Type: AWS::SecretsManager::RotationSchedule
+    Properties:
+      SecretId: !Ref ApiKeySecret
+      RotateImmediatelyOnUpdate: True
+      RotationLambdaARN: !GetAtt SecretRotationFunction.Arn
+      RotationRules:
+        AutomaticallyAfterDays: 90
+
+  SecretRotationFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: VPC not required
+          - id: W92
+            reason: ReservedConcurrentExecutions not required
+    Properties:
+      CodeUri: functions/secret-rotation
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+                - secretsmanager:DescribeSecret
+                - secretsmanager:PutSecretValue
+                - secretsmanager:UpdateSecretVersionStage
+              Resource: !Ref ApiKeySecret
+            - Effect: Allow
+              Action:
+                - apigateway:POST
+              Resource:
+                - !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}::/apikeys
+                - !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}::/usageplans/${ApiUsagePlan}/keys
+            - Effect: Allow
+              Action:
+                - apigateway:DELETE
+              Resource:
+                - !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}::/apikeys/*
+                - !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}::/usageplans/${ApiUsagePlan}/keys/*
+
+  SecretRotationFunctionPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref SecretRotationFunction
+      Principal: secretsmanager.amazonaws.com

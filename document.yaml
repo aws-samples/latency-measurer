@@ -1,0 +1,99 @@
+schemaVersion: '2.2'
+
+parameters:
+
+  Input:
+    type: String
+  ApiKey:
+    type: String
+  ApiEndpoint:
+    type: String
+
+mainSteps:
+
+  - action: aws:runShellScript
+    name: pingparsingLinux
+    precondition:
+      StringEquals:
+        - platformType
+        - Linux
+    inputs:
+      runCommand:
+        - 'input="{{ Input }}"'
+        - 'apiKey="{{ ApiKey }}"'
+        - 'apiEndpoint="{{ ApiEndpoint }}"'
+        - 'for pair in ${input//,/ } ; do'
+        - '    echo $pair'
+        - '    kv=($(echo $pair | tr "|" " "))'
+        - '    stdOut=$(ping -c 5 ${kv[1]})'
+        - '    regex="--- ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+) ping statistics ---.([0-9]+) packets transmitted, ([0-9]+) received, ([0-9\.]+)% packet loss, time [0-9]+ms(.rtt min/avg/max/mdev = ([0-9\.]+)/([0-9\.]+)/([0-9\.]+)/([0-9\.]+) ms)?"'
+        - '    if [[ $stdOut =~ $regex ]]'
+        - '    then'
+        - '        destination=${BASH_REMATCH[1]}'
+        - '        packet_transmit=${BASH_REMATCH[2]}'
+        - '        packet_receive=${BASH_REMATCH[3]}'
+        - '        packet_loss_rate=${BASH_REMATCH[4]}'
+        - '        packet_loss_count=$((($packet_transmit*$packet_loss_rate)/100))'
+        - '        if [[ -z ${BASH_REMATCH[5]} ]]'
+        - '        then'
+        - '            rtt_min="null"'
+        - '            rtt_avg="null"'
+        - '            rtt_max="null"'
+        - '            rtt_mdev="null"'
+        - '        else'
+        - '            rtt_min=${BASH_REMATCH[6]}'
+        - '            rtt_avg=${BASH_REMATCH[7]}'
+        - '            rtt_max=${BASH_REMATCH[8]}'
+        - '            rtt_mdev=${BASH_REMATCH[9]}'
+        - '        fi'
+        - '        result="{'
+        - '    \"destination\": \"$destination\",'
+        - '    \"packet_transmit\": $packet_transmit,'
+        - '    \"packet_receive\": $packet_receive,'
+        - '    \"packet_loss_count\": $packet_loss_count,'
+        - '    \"packet_loss_rate\": $packet_loss_rate,'
+        - '    \"rtt_min\": $rtt_min,'
+        - '    \"rtt_avg\": $rtt_avg,'
+        - '    \"rtt_max\": $rtt_max,'
+        - '    \"rtt_mdev\": $rtt_mdev'
+        - '}"'
+        - '        curl -s -X POST ${apiEndpoint}/${kv[0]}/$(hostname) -H "x-api-key: $apiKey" -d "$result" > /dev/null'
+        - '    fi'
+        - 'done'
+
+  - action: aws:runPowerShellScript
+    name: pingparsingWindows
+    precondition:
+      StringEquals:
+        - platformType
+        - Windows
+    inputs:
+      runCommand:
+        - '$input="{{ Input }}"'
+        - '$apiKey="{{ ApiKey }}"'
+        - '$apiEndpoint="{{ ApiEndpoint }}"'
+        - '$input -split "," | ForEach {'
+        - '    Write-Output $_'
+        - '    $kv=$_ -split "\|"'
+        - '    $std_out = ping -n 1 $kv[1]'
+        - '    if ($std_out -join "`n" -match "(?smi)Ping statistics for (?<destination>\d+\.\d+\.\d+\.\d+):\s+Packets: Sent = (?<packet_transmit>\d+), Received = (?<packet_receive>\d+), Lost = (?<packet_loss_count>\d+) \((?<packet_loss_rate>[\d\.]+)% loss\),(?:\s+Approximate round trip times in milli-seconds:\s+Minimum = (?<rtt_min>[\d\.]+)ms, Maximum = (?<rtt_max>[\d\.]+)ms, Average = (?<rtt_avg>[\d\.]+)ms)?") {'
+        - '        $data = [ordered]@{}'
+        - '        $keys = "destination", "packet_transmit", "packet_receive", "packet_loss_count", "packet_loss_rate", "rtt_min", "rtt_avg", "rtt_max", "rtt_mdev"'
+        - '        foreach ($key in $keys) {'
+        - '            if ($Matches.Keys -Contains $key) {'
+        - '                try {'
+        - '                    $data.add($key, [decimal]($Matches[$key]))'
+        - '                }'
+        - '                catch {'
+        - '                    $data.add($key, ($Matches[$key]))'
+        - '                }'
+        - '            } else {'
+        - '                $data.add($key, $null)'
+        - '            }'
+        - '        }'
+        - '        $result = $data | ConvertTo-Json'
+        - '        Invoke-RestMethod -Method POST -Uri "$apiEndpoint/$($kv[0])/$(hostname)" -Headers @{"x-api-key" = $apiKey} -Body $result | Out-Null'
+        - '    }'
+        - '}'
+        - 'exit $LASTEXITCODE'
+

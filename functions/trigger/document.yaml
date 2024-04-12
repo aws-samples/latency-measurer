@@ -1,0 +1,59 @@
+schemaVersion: '0.3'
+
+parameters:
+
+  InstanceIds:
+    type: List<AWS::EC2::Instance::Id>
+
+mainSteps:
+
+  - name: GetSecret
+    action: aws:executeAwsApi
+    inputs:
+      Service: secretsmanager
+      Api: GetSecretValue
+      SecretId: 'os.environ["SECRET_ID"]'
+    outputs:
+      - Name: SecretValue
+        Selector: $.SecretString
+        Type: String
+
+  - name: GetIps
+    action: aws:executeScript
+    inputs:
+      Runtime: python3.8
+      Handler: script_handler
+      Script: ''
+      InputPayload:
+        SecretValue: '{{ GetSecret.SecretValue }}'
+        ApiEndpoint: 'os.environ["API_ENDPOINT"]'
+        IpSets: {}
+    outputs:
+      - Name: ApiKey
+        Selector: $.Payload.apiKey
+        Type: String
+      - Name: Ips
+        Selector: $.Payload.ips
+        Type: String
+
+  - name: RunCommands
+    action: aws:runCommand
+    inputs:
+      DocumentName: 'os.environ["COMMAND_DOCUMENT"]'
+      InstanceIds: '{{ InstanceIds }}'
+      Parameters:
+        Input: '{{ GetIps.Ips }}'
+        ApiKey: '{{ GetIps.ApiKey }}'
+        ApiEndpoint: 'os.environ["API_ENDPOINT"]'
+
+  - name: RepairTable
+    action: aws:executeAwsApi
+    inputs:
+      Service: athena
+      Api: StartQueryExecution
+      QueryExecutionContext:
+        Catalog: 'os.environ["ATHENA_CATALOG"]'
+        Database: 'os.environ["ATHENA_DATABASE"]'
+      QueryString: 'MSCK REPAIR TABLE latency'
+      ResultConfiguration:
+        OutputLocation: 'os.environ["ATHENA_S3_URI"]'
