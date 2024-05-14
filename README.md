@@ -41,10 +41,10 @@ sam deploy --guided
 
 ## Usage
 
-The first required step is to create an `ipsets.json` file and upload it to the S3 bucket created for you. If you intend to do testing against the Endpoints listed in the [AWS EC2 Reachability Page](https://ec2-reachability.amazonaws.com/) this file can be created automatically by running the **Scraper** Lambda function:
+The first required step is to create an `ipsets.json` file and upload it to the S3 bucket created for you. If you intend to do testing against the Endpoints listed in the [AWS EC2 Reachability Page](https://ec2-reachability.amazonaws.com/) this file can be created automatically by running the **Scraper** Lambda function, change the stack name according to your setup:
 
 ```bash
-sam remote invoke ScraperFunction
+sam remote invoke ScraperFunction --stack-name sam-app
 ```
 
 If you intend to do latency testing against your own endpoints follow the format of the sample provided in /samples/ipset.json
