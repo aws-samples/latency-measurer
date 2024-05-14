@@ -36,7 +36,7 @@ sam build -u
 To deploy the solution, issue the following command and follow the on screen promptsL
 
 ```bash
-sam deploy
+sam deploy --guided
 ```
 
 ## Usage
