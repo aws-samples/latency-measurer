@@ -49,7 +49,7 @@ sam remote invoke ScraperFunction --stack-name sam-app
 
 If you intend to do latency testing against your own endpoints follow the format of the sample provided in /samples/ipset.json
 
-The creation of this file and placing it in the S3 bucket (which is done automatically by the Scraper function), triggers a second Lambda. This Lambda creates an SSM Automation document called **latency-checker**, executing this document will run the ping tests and collect the data.
+The creation of this file and placing it in the S3 bucket (which is done automatically by the Scraper function), triggers a second Lambda. This Lambda creates an SSM Automation document called **latency-checker** or **sam-app** depending on your Stack name, executing this document will run the ping tests and collect the data.
 
 ## Post-Deploy
 
@@ -63,7 +63,7 @@ You can either run the automation document manually on your selected instances o
 This example shows running the automation document on 2 instances with EC2 Systems Manager agent homed in the eu-west-1 region and selecting to ping the AWS locations of Europe and Africa:
 
 ```bash
-aws ssm start-automation-execution --document-name "latency-checker" --document-version "\$DEFAULT" --parameters '{"InstanceIds":["i-07cf7250c766cdba6","i-07af0a6d41a9abb4a"],"UsEast":["Exclude"],"UsWest":["Exclude"],"Canada":["Exclude"],"SouthAmerica":["Exclude"],"Europe":["Include"],"Africa":["Include"],"MiddleEast":["Exclude"],"AsiaPacific":["Exclude"],"China":["Exclude"]}' --region eu-west-1
+aws ssm start-automation-execution --document-name "sam-app" --document-version "\$DEFAULT" --parameters '{"InstanceIds":["i-07cf7250c766cdba6","i-07af0a6d41a9abb4a"],"UsEast":["Exclude"],"UsWest":["Exclude"],"Canada":["Exclude"],"SouthAmerica":["Exclude"],"Europe":["Include"],"Africa":["Include"],"MiddleEast":["Exclude"],"AsiaPacific":["Exclude"],"China":["Exclude"]}' --region eu-west-1
 ```
 
 If you want to perform automated latency testing for an extended period of time, the recommendation is that you create an Amazon EventBridge rule on a rate (schedule) basis that executes the automation document on your compute targets.
